@@ -1,5 +1,6 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
+import Landing from './Components/Landing'
 import Form from './Components/Form'
 import AllMeals from './Components/AllMeals'
 import MealCategory from './Components/MealCategory'

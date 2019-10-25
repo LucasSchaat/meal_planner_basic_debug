@@ -5,6 +5,13 @@ import {updateForm} from '../redux/reducer'
 import '../App.css';
 
 class Meal extends Component {
+    componentDidUpdate(prevProps) {
+        if (this.prevProps !== this.props.meal) {
+            this.render()
+        }
+    }
+
+
     render(){
         return (
             <div>

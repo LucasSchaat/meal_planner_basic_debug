@@ -11,7 +11,7 @@ const initialState = {
     title: '',
     image: '',
     description: '',
-    favorited: '',
+    favorited: false,
     id: 0
 }
 
@@ -23,6 +23,9 @@ export const saveMeal = (
     favorited,
     id
 ) => {
+    // console.log('id in reducer:', id)
+    // console.log('category', category)
+    // console.log('favorited', favorited)
     if (id === 0) {
         let data = axios.post('/api/meals', [category, title, image, description, favorited])
                         .then(res => res.data)
@@ -48,6 +51,7 @@ export const updateForm = (category, title, image, description, favorited, id) =
 }
 
 export const updateCategory = (category) => {
+    // console.log('category:', category)
     return {
         type: UPDATE_CATEGORY,
         payload: category
@@ -57,19 +61,21 @@ export const updateCategory = (category) => {
 export default function (state = initialState, action) {
     const { type, payload } = action
     switch (type) {
-        case UPDATE_CATEGORY + '_FULFILLED':
-            return { category: payload }
-        case UPDATE_FORM + '_FULFILLED':
+        case UPDATE_CATEGORY:
+            // console.log(payload)
+            return { ...state, category: payload }
+        case UPDATE_FORM:
+            console.log(payload)
             return {
-                category: payload,
-                title: payload,
-                image: payload,
-                description: payload,
-                favorited: payload,
-                id: payload 
+                category: payload[0],
+                title: payload[1],
+                image: payload[2],
+                description: payload[3],
+                favorited: payload[4],
+                id: payload[5] 
             }
         case EDIT_MEAL + '_FULFILLED':
-            return { category: payload.category }
+            return { ...state, category: payload.category }
         case ADD_MEAL + '_FULFILLED':
             return state
         default:

@@ -1,10 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { updateCategory } from '../redux/reducer'
 import '../App.css';
 
 function Header(props) {
+    // console.log(props)
     return (
         <div>
             <h2>Meal Planner App</h2>
@@ -28,4 +29,4 @@ function mapStatetoProps(state) {
     }
 }
 
-export default connect(mapStatetoProps, {updateCategory})(Header)
+export default connect(mapStatetoProps, {updateCategory})(withRouter(Header))

@@ -25,6 +25,8 @@ class Form extends Component {
 
     render(){
         const {category, title, image, description, favorited, id} = this.state
+        console.log('store:', this.props.mealStore)
+        console.log('favorited in form:', this.props.mealStore.favorited)
         return (
             <div>
                 <h1>Let's Add a Meal</h1>

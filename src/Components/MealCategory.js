@@ -23,8 +23,11 @@ class MealCategory extends Component {
     }
 
     deleteMeal = (id, category) => {
+        // console.log(id)
+        // console.log(category)
         axios.delete(`/api/meals/${id}/${category}`)
             .then(res => {
+                console.log(res.data)
                 this.setState({
                     meals: res.data
                 })
@@ -32,6 +35,7 @@ class MealCategory extends Component {
     }
     
     render(){
+        // console.log(this.props.mealStore.category)
         return (
             <div>
                 {this.state.meals.map((meal, index) => {

@@ -1,9 +1,11 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { updateCategory } from '../redux/reducer'
 import '../App.css';
 
 function AllMeals(props) {
+    // console.log(props)
     return (
         <div>
             <button onClick={() => {
@@ -36,4 +38,4 @@ function mapStatetoProps(state) {
     }
 }
 
-export default connect(mapStatetoProps, {updateCategory})(AllMeals)
+export default connect(mapStatetoProps, {updateCategory})(withRouter(AllMeals))
